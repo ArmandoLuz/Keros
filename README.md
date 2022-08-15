@@ -16,6 +16,8 @@ This is a project that aims to implement an artificial neural network for classi
 # Infos
 This project is a manual implementation of a neural network, based on the mutilayer perceptron model for classifying features of brain tomography images. The activation function implemented in this network was the sigmoid, the characteristics of the images are extracted through the Gray Level Co-Occurrence Matrix (GLCM).
 
+The image dataset that was used is public and available at https://www.kaggle.com/datasets/preetviradiya/brian-tumor-dataset
+
 # Pré-requeriments
 ...
 
