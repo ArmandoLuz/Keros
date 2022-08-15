@@ -1,5 +1,5 @@
 # Artificial Neural Network for brain tumor detection
-![License](https://img.shields.io/badge/License-MIT-green)
+![License](https://img.shields.io/badge/License-GNU-green)
 ![python](https://img.shields.io/badge/Python-3.9.12-blue)
 ![Numpy](https://img.shields.io/badge/Numpy-1.21.5-blue)
 ![Skimage](https://img.shields.io/badge/Scikit_Image-0.19.2-blue)
