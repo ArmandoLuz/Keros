@@ -1,5 +1,6 @@
 import random
 import numpy as np
+import metrics
 
 class MClassifier:
     """
@@ -20,6 +21,12 @@ class MClassifier:
         self._weights_layer2 = []
         #Inicializa uma variável para armazenar o erro.
         self._mean_absolute_loss = 0
+        #Metrics
+        self._accuracy = 0
+        self._precision = 0
+        self._recall = 0
+        self._f1 = 0
+        self._kappa = 0
 
     def fit(self, x, y, epoch=5, neurons=5, learning_rate=0.0001, error_threshold=0.1, moment=1):
         """
@@ -53,7 +60,8 @@ class MClassifier:
             print("Loss: {}".format(self._mean_absolute_loss))
 
             if self._mean_absolute_loss <= error_threshold:
-                return epc
+                y_pred = [[self.thresh(i)] for i in layer2_active]
+                self._accuracy, self._precision, self._recall, self._f1, self._kappa = metrics.metrics(y, y_pred)
                 break
             
             #---------------------CALCULANDO O GRADIENTE-------------------------------
@@ -76,15 +84,39 @@ class MClassifier:
             x_transpose = x.T
             xXDelta_layer1 = x_transpose.dot(delta_layer1)
             self._weights_layer1 = (self._weights_layer1 * moment) + (xXDelta_layer1 * learning_rate)
-        
-        #-------------------------FIM DO TREINO-----------------------------------------
 
+        #-------------------------FIM DO TREINO-------------------------------------------
 
-
-
+        #---------------------CALCULANDO MÉTRICAS-----------------------------------------
+        y_pred = [[self.thresh(i)] for i in layer2_active]
+        self._accuracy, self._precision, self._recall, self._f1, self._kappa = metrics.metrics(y, y_pred)
              
-    def predict(self):
-        pass
+    def predict(self, x):
+        """
+        Info:
+            Camada de predição da rede neural.
+        Params:
+            x (Array numpy): Valores de entrada / features.
+        """
+
+        #Inicia uma lista para armazenar as predições
+        predict = []
+
+        #--------------------------INICIALIZANDO O PREDIÇÃO------------------------------
+        #Percorre feature por feature
+        for i in range(len(x)):
+            #Layer 1
+            layer1 = np.dot(x[i], self._weights_layer1)
+            layer1_active = self.sigmoid(layer1)
+
+            #Layer 2
+            layer2 = np.dot(layer1_active, self._weights_layer2)
+            layer2_active = self.sigmoid(layer2)
+
+            #Predição
+            predict.append([self.thresh(layer2_active)])
+
+        return predict
 
     def initialize_weights(self, x, neurons):
         """
@@ -134,3 +166,14 @@ class MClassifier:
             value (float): Valor para aplicar a derivada.
         """
         return value * (1 - value)
+
+    def thresh(self, value):
+        """
+        Info:
+            Função para aplicar a função de threshold.
+        Params:
+            value (float): Valor para aplicar a função.
+        """
+        return 1 if value >= 0.5 else 0
+
+    
