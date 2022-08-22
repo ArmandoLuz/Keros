@@ -5,6 +5,8 @@
 ![Skimage](https://img.shields.io/badge/Scikit_Image-0.19.2-blue)
 ![Sklearn](https://img.shields.io/badge/Scikit_Learn-1.0.2-blue)
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-3.5.1-blue)
+![Pickle](https://img.shields.io/badge/-Pickle-blue)
+![Random](https://img.shields.io/badge/-Random-blue)
 
 # Index
 This is a project that aims to implement an artificial neural network for classification of brain tomography images.
