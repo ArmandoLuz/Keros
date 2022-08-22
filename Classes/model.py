@@ -1,6 +1,9 @@
 import random
 import numpy as np
 from model_tools import metrics
+#Primeira versão estável do modelo.
+#Possui apenas a camada de entrada, um camada oculta e a camada de saida.
+
 
 class MClassifier:
     """
