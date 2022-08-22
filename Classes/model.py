@@ -1,6 +1,6 @@
 import random
 import numpy as np
-import metrics
+from model_tools import metrics
 
 class MClassifier:
     """
@@ -61,7 +61,7 @@ class MClassifier:
 
             if self._mean_absolute_loss <= error_threshold:
                 y_pred = [[self.thresh(i)] for i in layer2_active]
-                self._accuracy, self._precision, self._recall, self._f1, self._kappa = metrics.metrics(y, y_pred)
+                self._accuracy, self._precision, self._recall, self._f1, self._kappa = metrics(y, y_pred)
                 break
             
             #---------------------CALCULANDO O GRADIENTE-------------------------------
@@ -89,7 +89,7 @@ class MClassifier:
 
         #---------------------CALCULANDO MÉTRICAS-----------------------------------------
         y_pred = [[self.thresh(i)] for i in layer2_active]
-        self._accuracy, self._precision, self._recall, self._f1, self._kappa = metrics.metrics(y, y_pred)
+        self._accuracy, self._precision, self._recall, self._f1, self._kappa = metrics(y, y_pred)
              
     def predict(self, x):
         """
