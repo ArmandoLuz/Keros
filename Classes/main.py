@@ -29,7 +29,7 @@ loaded_model = load("model.pkl")
 #Testando o modelo
 test = loaded_model.predict(x_test)
 print("-----------------Teste de predição-----------------")
-print("Predição do teste [[0, 0], [0, 1]]\nRetorno: {}".format(test))
+print("Predição do teste [[0, 1], [1, 0]]\nRetorno: {}".format(test))
 print("---------------------------------------------------")
 
 #Metrics
