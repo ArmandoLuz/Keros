@@ -1,6 +1,6 @@
 import random
 import numpy as np
-from model_tools import metrics
+from model_tools import Tools
 #Primeira versão estável do modelo.
 #Possui apenas a camada de entrada, um camada oculta e a camada de saida.
 
@@ -64,7 +64,7 @@ class MClassifier:
 
             if self._mean_absolute_loss <= error_threshold:
                 y_pred = [[self.thresh(i)] for i in layer2_active]
-                self._accuracy, self._precision, self._recall, self._f1, self._kappa = metrics(y, y_pred)
+                self._accuracy, self._precision, self._recall, self._f1, self._kappa = Tools.metrics(y, y_pred)
                 break
             
             #---------------------CALCULANDO O GRADIENTE-------------------------------
@@ -92,7 +92,7 @@ class MClassifier:
 
         #---------------------CALCULANDO MÉTRICAS-----------------------------------------
         y_pred = [[self.thresh(i)] for i in layer2_active]
-        self._accuracy, self._precision, self._recall, self._f1, self._kappa = metrics(y, y_pred)
+        self._accuracy, self._precision, self._recall, self._f1, self._kappa = Tools.metrics(y, y_pred)
              
     def predict(self, x):
         """

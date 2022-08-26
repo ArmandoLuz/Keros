@@ -1,7 +1,7 @@
 from model import MClassifier
 from rich import print
 import numpy as np
-from model_tools import save, load
+from model_tools import Tools
 
 #Teste simples com o operador XOR
 x_train = np.array([[0, 0], 
@@ -11,7 +11,7 @@ x_train = np.array([[0, 0],
 
 y = np.array([[0], [1], [1], [0]])
 
-x_test = np.array([[0, 1], 
+x_test = np.array([[0, 0], 
                    [1, 0]])
 
 #Instanciando a classificador (Modelo já foi treinado e saldo)
@@ -24,12 +24,12 @@ x_test = np.array([[0, 1],
 #save(m, "model.pkl")
 
 #Carregando o modelo
-loaded_model = load("model.pkl")
+loaded_model = Tools.load("model.pkl")
 
 #Testando o modelo
 test = loaded_model.predict(x_test)
 print("-----------------Teste de predição-----------------")
-print("Predição do teste [[0, 1], [1, 0]]\nRetorno: {}".format(test))
+print("Predição do teste [[0, 0], [1, 0]]\nRetorno: {}".format(test))
 print("---------------------------------------------------")
 
 #Metrics
