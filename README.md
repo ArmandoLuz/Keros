@@ -9,18 +9,17 @@
 ![Random](https://img.shields.io/badge/-Random-blue)
 
 # Index
-This is a project that aims to implement an artificial neural network for classification of brain tomography images.
-
-<h4 align="center"> 
-	🚧  Status 🚀 Under construction...  🚧
-</h4>
+Este é um pacote destinado a implementação dos conceitos de visão computacional e processamento de imagens.
 
 # Infos
-This project is a manual implementation of a neural network, based on the mutilayer perceptron model for classifying features of brain tomography images. The activation function implemented in this network was the sigmoid, the characteristics of the images are extracted through the Gray Level Co-Occurrence Matrix (GLCM).
-
-The image dataset that was used is public and available at https://www.kaggle.com/datasets/preetviradiya/brian-tumor-dataset
+Este pacote contém uma rede neural implementada do zero, somente usando o numpy. Também contém funcionalidades para o processamento de imagens e extração de atributos.
 
 # Pré-requeriments
-...
+As depêndencias deste pacote são:
 
+- numpy
+- scikit-image
+- scikit-learn
+- matplotlib
+- pickle
 
