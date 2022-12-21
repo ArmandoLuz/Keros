@@ -1,20 +1,38 @@
 from skimage.feature import graycomatrix, graycoprops
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
-from skimage.io import imread
 import numpy as np
 
 class Features:
+    """Esta classe é responsável por extrair as features de um dataset.
+
+    Esta classe extrai as features através da matriz de co-ocorrência de níveis de cinza.
+
+    Methods
+    -------
+    GLCM(dataset, steps = 1)
+        Calcula a matriz de co-ocorrência de níveis de cinza.
+    GLCM_props(matrix)
+        Calcula as seis propriedades de haralick da matriz de co-ocorrência de níveis de cinza.
+    categorize(dataset)
+        Categoriza os bits de imagens de um dataset.
+    PCA(dataset, n_components = 2)
+        Aplica a técnica de redução de dimensionalidade PCA.
+    """
 
     @staticmethod
     def GLCM(dataset, steps = 1):
-        """
-        Info:
-            Calcula a matriz de Co-ocorrencia de níveis de cinza de um dataset.
-        Params:
-            dataset (array numpy, array, imread_collection): Dataset de imagens.
-            steps (array): Lista de deslocamentos de distância de pares de pixels.
-        Return:
+        """Calcula a matriz de Co-ocorrencia de níveis de cinza de um dataset.
+
+        Parameters
+        ----------
+        dataset : Array numpy
+            Lista com imagens.
+        steps : int
+            Número de passos para a matriz de co-ocorrência.
+
+        Returns
+        -------
             Matriz isotrópica.
         """
         matrix = []
@@ -30,12 +48,15 @@ class Features:
     
     @staticmethod
     def GLCM_props(matrix):
-        """
-        Info:
-            Calcula as propriedades da matriz de Co-ocorrencia de níveis de cinza.
-        Params:
-            matrix (array): Array de matrizes de Co-ocorrencia de níveis de cinza.
-        Return:
+        """Calcula as seis propriedades de haralick da matriz de Co-ocorrencia de níveis de cinza.
+
+        Parameters
+        ----------
+        matrix : Array numpy
+            Matriz de co-ocorrência de níveis de cinza.
+        
+        Returns
+        -------
             Matriz com as propriedades de contraste, dissimilaridade, homogeneidade, 
             energia, correlação e ASM.
         """
@@ -55,14 +76,19 @@ class Features:
 
     @staticmethod
     def categorize(dataset, new_value_bit, old_value_bit):
-        """
-        Info:
-            Categoriza os bits de imagens de um dataset.
-        Params:
-            dataset (array numpy): Dataset de imagens bi-dimensionais.
-            new_value_bit (int): Novo valor de bits.
-            old_value_bit (int): Valor dos bits da imagem
-        Return:
+        """Categoriza os bits de imagens de um dataset.
+
+        Parameters
+        ----------
+        dataset : Array numpy
+            Lista com imagens.
+        new_value_bit : int
+            Novo valor para o bit.
+        old_value_bit : int
+            Valor antigo do bit.
+        
+        Returns
+        -------
             Array com as imagens categorizadas.
         """
         categorized = []
@@ -86,13 +112,17 @@ class Features:
         return np.asarray(categorized)
     @staticmethod
     def PCA(X, n_components):
-        """
-        Info:
-            Aplica o algoritmo de redução de dimensionalidade PCA em uma matriz de características.
-        Params:
-            X (array): Matriz de características.
-            n_components (int): Número de componentes principais.
-        Return:
+        """Aplica o algoritmo de redução de dimensionalidade PCA em uma matriz de características.
+
+        Parameters
+        ----------
+        X : Array numpy
+            Matriz de características.
+        n_components : int
+            Número de componentes principais.
+    
+        Returns
+        -------
             Matriz de características reduzida.
         """
         
