@@ -1,4 +1,4 @@
-# Artificial Neural Network for brain tumor detection
+# Framework para aplicação de conceitos de visão computacional
 ![License](https://img.shields.io/badge/License-GPL_2.0-green)
 ![python](https://img.shields.io/badge/Python-3.9.12-blue)
 ![Numpy](https://img.shields.io/badge/Numpy-1.21.5-blue)
